@@ -1,0 +1,59 @@
+Para los que tienen el problema que tras correr el comando “npm run build” el arcivo main.js les queda igual que el archivo index.js aca esta el ¿por que?..
+
+1)Tras la actualizacion a webpack 5 debemos instalar las siguientes dependdencias de babel: “npm install @babel/core babel-loader @babel/preset-env”.
+
+2)Luego debemos generar en la raiz del proyecto el archivo “babel.config.json” alli debemos agregar lo siguiente:
+
+{
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+
+Luego vamos al archivo "webpack.config.js y agregamos la siguiente regla:
+      { // Estructura de Babel
+        test: /\.m?js$/, //Nos permite identificar los archivos según se encuentran en nuestro entorno.
+        exclude: /node_modules/, //Excluimos la carpeta de node modules
+        use: {
+          loader: 'babel-loader',//Utilizar un loader como configuración establecida.
+          }
+      }
+Al llegar a este paso y correr el comando “npm run build” se daran cuenta de que sigue igual el resultado de main.js, y es porque tras la actualizacion, babel solo agrega el resto de codigo cuando usamos sintaxys moderna de JavaScripts.
+
+Como prueba agreguen el siguiente codigo en el archivo index.js:
+
+console.log("Hello webpack!");
+
+const fancyFunc = () => {
+  return [1, 2];
+};
+
+const [a, b] = fancyFunc();
+Ahora compilen y veran que el archivo main.js si viene completo, porque estamos empleando una arrow function y es necesario hacer el codigo compatible con el resto de navegadores…
+
+
+
+
+
+Encontré otra forma donde no es necesario crear el archivo. Está directamente explicada en el github de babel-loader, pero lo añado aquí también.
+
+En el archivo webpack.config.js dentro del objeto module.exports, en el objeto anidado module:
+
+module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+// ---------- AÑADIMOS ESTA PARTE 
+          options: {
+            presets: [
+              ['@babel/preset-env', {targets: "defaults"}]
+// ---------- HASTA AQUÍ
+            ]
+          }
+        }
+      }
+    ]
+  },

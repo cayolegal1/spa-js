@@ -1,0 +1,25 @@
+{
+  "name": "spa",
+  "version": "1.0.0",
+  "description": "A single page application course project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
+  },
+  "keywords": [],
+  "author": "cayo legal <cayolegal@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "babel-loader": "^8.2.5",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
