@@ -1,7 +1,4 @@
-console.log("Hello world")
+import router from "./routes";
 
-const fancyFunc = () => {
-    return [1, 2];
-  };
-  
-  const [a, b] = fancyFunc();
+window.addEventListener('DOMContentLoaded', router)
+
