@@ -1,0 +1,9 @@
+1 paso: crear los componentes, es decir, las diferentes vistas o templates que usará nuestra SPA y exportarlas
+
+
+
+2 paso: crear una función router que será asincrona, en donde estableceremos el contenido de un elemento HTML a 
+
+través de la función innerHTML de los elementos del DOM, de la cual esta será una función asíncrona, el contenido de
+
+este será un componente o template
