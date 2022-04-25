@@ -6,7 +6,7 @@ const resolveRoutes = (route) => {
         return validRoute
     }
 
-    return `/${route}/`  //about section
+    return `/${route}/`  //about section or error404
 }
 
 export default resolveRoutes;

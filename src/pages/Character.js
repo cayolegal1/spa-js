@@ -1,21 +1,27 @@
-const Character = () => {
+import getData from "../utils/getData";
+import getHash from "../utils/getHash";
 
+const Character = async () => {
+
+    const id = getHash()
+    const request = await getData(id)
     const view = `
 
     <br>
     <div class="character-inner">
 
         <article class="character-card">
-            <img src="https://rickandmortyapi.com/api/character/avatar/361.jpeg" alt="name">
+            <img src="${request.image}" alt="name">
+            <h2>${request.name}</h2>
         </article>
 
         <article class="character-card">
-            <h3>Episodes:</h3>
-            <h3>Status:</h3>
-            <h3>Species:</h3>
-            <h3>Gender:</h3>
-            <h3>Origin:</h3>
-            <h3>Last location:</h3>
+            <h3>Episodes: ${request.episode.length}</h3>
+            <h3>Status: ${request.status}</h3>
+            <h3>Species: ${request.species}</h3>
+            <h3>Gender: ${request.gender}</h3>
+            <h3>Origin: ${request.origin.name}</h3>
+            <h3>Last location: ${request.location.name}</h3>
         </article>
 
     </div>
