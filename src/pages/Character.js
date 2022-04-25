@@ -2,10 +2,11 @@ const Character = () => {
 
     const view = `
 
+    <br>
     <div class="character-inner">
 
         <article class="character-card">
-            <img src="image" alt="name">
+            <img src="https://rickandmortyapi.com/api/character/avatar/361.jpeg" alt="name">
         </article>
 
         <article class="character-card">

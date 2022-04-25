@@ -4,6 +4,7 @@ const getHash = () =>
 export default getHash;
 
 
+//location nos retorna un objeto de donde estamos parados (url)
 // location es parte del objecto window. Location tiene el atributo hash.
 // http://localhost:8080/#/1/
 //location.hash trae el fragmento de la url a partir de donde encuentre un #. En este caso traería #/1/

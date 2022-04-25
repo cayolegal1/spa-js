@@ -6,4 +6,69 @@
 
 través de la función innerHTML de los elementos del DOM, de la cual esta será una función asíncrona, el contenido de
 
-este será un componente o template
+este será un componente o template, esto para ver en el navegador el progreso de nuestra web 
+
+
+
+3 paso: crear una función en donde vamos a capturar el hash de la url donde estamos, ya que, en este caso 
+
+trabajaremos con llamadas a APIS, manipurarla con location.hash que nos devuelve la url apartir del hash, recortar 
+
+dicho resultado son splice() en donde el resultado será de esto #/1/ a esto /1/, a splice le pasamos el valor 1 
+
+porque solo queremos que haga un recorte desde el primer elemento hasta el final, que nos devuelve el recorte, luego 
+
+usar el metodo split para generar un array con los elementos y separarlos, pasandole el valor '/' de modo que 
+
+tendriamos este resultado ['/', '1', '/'] y capturar la posición del id. Esta función debemos exportarla para poder 
+
+usarla
+
+
+
+4 paso: hacer una función que tendrá validaciones para lo que recibiremos del hash, ya que puede ser en este caso no 
+
+más de 3 elementos, en tal caso retornaremos la ruta en si que nos pasan, si tiene 3 o menos elementos (length), 
+
+procederemos a preguntar si es que la ruta o hash que nos pasan es igual a '/' que sería la raíz del proyecto, si no, 
+
+pasaremos el id '/:id' y devolveremos dicho valor en la función, eso lo podemos haer con una variable que tenga un 
+
+ternario, como así route === '/' ? route : '/:id' y retornar dicha variable es importante que los links tengan este 
+
+formato si es que no cumplen con nuestra validación: "#/link/", ya que usaremos el método hash de location. Esta 
+
+debemos exportarla para poder usarla 
+
+
+
+5 paso: tener un objeto con las rutas que nosotros definamos, el cual su valor serán los templates que creamos 
+
+anteriormente, entonces luego crearemos una función donde capturaremos un elemento vacío del DOM para luego 
+
+usarla como contenedor. Ejecutaremos la función que nos devuelve la url de nuestra ubicación a partir del hash, 
+
+guardandola en una variable en donde podremos reutilizarla y así poder saber que url nos llega y de acuerdo a eso 
+
+ejecutar dicho template, un ejemplo más claro: 
+
+const routes = {
+
+  '/': Home,
+  '/:id': Character, 
+  'error404': Error404
+}
+
+let hash = getHash()
+let route = await resolveRoutes(hash)
+
+let render = routes[route] ? routes[route] : Error404
+
+content.innerHTML = await render()
+
+
+
+
+6 paso: crear un nuevo eventListener en donde el tipo será 'hashchange' en donde ejecutaremos la función en donde 
+
+renderizamos los templates de acuerdo a las urls que nos llegan

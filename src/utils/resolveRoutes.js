@@ -6,7 +6,7 @@ const resolveRoutes = (route) => {
         return validRoute
     }
 
-    return `/${route}/`  //about
+    return `/${route}/`  //about section
 }
 
 export default resolveRoutes;
