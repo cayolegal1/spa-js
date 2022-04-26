@@ -11,7 +11,7 @@ const Home = async () => {
                 return `
                 <article class="character-item">
                     <a href="#/${character.id}/" class="">
-                        <img src="${character.image}" alt="${character.name}" title="${character.name} image"/>
+                        <img src="${character.image}" alt="${character.name}" title="${character.name}" class="character-image"/>
                         <h2>${character.name}</h2>
                     </a>
                 </article>

@@ -4,9 +4,9 @@ const Error404 = () => {
 
         <div class="error404">
             <h2>Error 404</h2>
+            <h4>La página que estas buscando no existe. Por favor intenta con otra</h4>
         </div>
 
-        <h4>La página que estas buscando no existe. Por favor intenta con otra</h4>
     `
     return view
 }

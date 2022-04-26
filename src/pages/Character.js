@@ -7,7 +7,6 @@ const Character = async () => {
     const request = await getData(id)
     const view = `
 
-    <br>
     <div class="character-inner">
 
         <article class="character-card">
